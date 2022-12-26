@@ -1,4 +1,4 @@
-package com.checkout.database
+package com.checkout.infrastructure.database
 
 import com.github.michaelbull.logging.InlineLogger
 import com.zaxxer.hikari.HikariConfig
@@ -8,12 +8,10 @@ import java.util.Properties
 
 internal class HikariConnector (
     private val databaseConfig: Properties,
-) :DBConnector {
+) : DBConnector {
     private val logger = InlineLogger()
     private lateinit var ds: HikariDataSource
     private lateinit var db: Database
-
-    private val tables = arrayOf("")
 
     override suspend fun <T> bootStorage(preInit: suspend () -> T) {
         logger.info { "Initializing database" }

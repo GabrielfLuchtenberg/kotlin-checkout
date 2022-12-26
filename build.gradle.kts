@@ -10,6 +10,7 @@ val postgresDriverVersion: String by rootProject
 plugins {
     kotlin("jvm") version "1.7.22"
     id("io.ktor.plugin") version "2.2.1"
+    kotlin("plugin.serialization") version "1.7.22"
 }
 
 group = "com.checkout"
@@ -37,6 +38,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP:$hikaricpVersion")
     implementation("com.michael-bull.kotlin-inline-logger:kotlin-inline-logger:$inlineLoggerVersion")
     implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation("org.postgresql:postgresql:$postgresDriverVersion")
 
     //    testing stuff

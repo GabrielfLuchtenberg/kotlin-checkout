@@ -1,4 +1,4 @@
-package com.checkout.env
+package com.checkout.infrastructure.env
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
@@ -17,6 +17,7 @@ internal class HoconBasedConfig(deploymentEnv: AppOsEnvironment) : Env {
             .resolve()
         this.config = rootConfig.getConfig("app-config")
     }
+
     override val database: Properties by lazy {
         val node = config.getConfig("database")
         node.toProperties()
@@ -38,7 +39,6 @@ class AppOsEnvironment {
     private val appDeploymentEnvKey = "APP_DEPLOYMENT_ENV"
 }
 
-
 interface Env {
-    val database : Properties;
+    val database : Properties
 }
